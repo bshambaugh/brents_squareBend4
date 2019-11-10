@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 8.7 -15.0);
+
+boundaryField
+{
+   inletFace
+   {
+     type fixedValue;
+     value uniform (0 8.7 -15.0);
+   }
+   inletWall
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0);
+   }
+   inletsourceFace
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0);
+   }
+   inletdestinationFace
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0);
+   }
+   fineMeshWall
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0); 
+  }
+   fineMeshSourceFace
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0);
+   }
+   fineMeshdestinationFace
+   {
+     type fixedNormalSlip;
+     fixedValue uniform (0 0 0);
+   }
+   fineMeshSymmetryWall
+   {
+     type symmetryPlane;
+   }
+   fineMeshOutletLeft
+   {
+     type matchedFlowRateOutletVelocity;
+     inletPatch inletFace;
+     value uniform (0 0 0);
+   }
+   fineMeshOutletBottom
+   {
+     type matchedFlowRateOutletVelocity;
+     inletPatch inletFace;
+     value uniform (0 0 0);
+   }
+
+
+}
+
+// ************************************************************************* //
